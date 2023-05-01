@@ -18,7 +18,74 @@ function createBaseLayOut () {
 }
 createBaseLayOut ();
 
-let engKeyArray = [
+let keyCodeArray = [
+    "Backquote",
+    "Digit1",
+    "Digit2",
+    "Digit3",
+    "Digit4",
+    "Digit5",
+    "Digit6",
+    "Digit7",
+    "Digit8",
+    "Digit9",
+    "Digit0",
+    "Minus",
+    "Equal",
+    "Backspace",
+    "Tab",
+    "KeyQ",
+    "KeyW",
+    "KeyE",
+    "KeyR",
+    "KeyT",
+    "KeyY",
+    "KeyU",
+    "KeyI",
+    "KeyO",
+    "KeyP",
+    "BracketLeft",
+    "BracketRight",
+    "Backslash",
+    "Delete",
+    "CapsLock",
+    "KeyA",
+    "KeyS",
+    "KeyD",
+    "KeyF",
+    "KeyG",
+    "KeyH",
+    "KeyJ",
+    "KeyK",
+    "KeyL",
+    "Semicolon",
+    "Quote",
+    "Enter",
+    "ShiftLeft",
+    "Backslash",
+    "KeyZ",
+    "KeyX",
+    "KeyC",
+    "KeyV",
+    "KeyB",
+    "KeyN",
+    "KeyM",
+    "Comma",
+    "Period",
+    "Slash",
+    "ArrowUp",
+    "ShiftRight",
+    "ControlLeft",
+    "MetaLeft",
+    "AltLeft",
+    "Space",
+    "AltRight",
+    "ArrowLeft",
+    "ArrowDown",
+    "ArrowRight"
+]
+
+let engSymArray = [
     "`",
     "1",
     "2",
@@ -85,7 +152,7 @@ let engKeyArray = [
     "&#9658;"
 ];
 
-let engCapsKeyArray = [
+let engCapsSymArray = [
     "`",
     "1",
     "2",
@@ -152,7 +219,7 @@ let engCapsKeyArray = [
     "&#9658;"
 ];
 
-let rusKeyArray = [
+let rusSymArray = [
     "ё",
     "1",
     "2",
@@ -219,7 +286,7 @@ let rusKeyArray = [
     "&#9658;"
 ];
 
-let rusCapsKeyArray = [
+let rusCapsSymArray = [
     "Ё",
     "1",
     "2",
@@ -288,12 +355,21 @@ let rusCapsKeyArray = [
 
 function createKeyboard () {
     let keyboard = document.querySelector('.keyboard');
-    for (let i = 0; i < keyArray.length; i++) {
+    for (let i = 0; i < engSymArray.length; i++) {
         let key = createNode('span', 'key');
-        key.innerHTML = keyArray[i];
+        key.innerHTML = engSymArray[i];
         keyboard.append(key);
     }
 }
 
 createKeyboard();
 
+
+// для полученеия массива кодов кнопок путем "прокликивания"
+
+// let keyCodeArray = [];
+
+// document.addEventListener("keydown", (event) => {
+//     keyCodeArray.push(event.code);
+//     console.log(keyCodeArray);
+// })
