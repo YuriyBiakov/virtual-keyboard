@@ -353,6 +353,8 @@ let rusCapsSymArray = [
     "&#9658;"
 ];
 
+let functionalButtonsIndex = [13, 14, 28, 29, 41, 42, 54, 55, 56, 57, 58, 59, 60, 61, 62 ,63];
+
 function createKeyboard () {
     let keyboard = document.querySelector('.keyboard');
     let line1 = createNode('div', 'line line1');
@@ -377,21 +379,49 @@ function createKeyboard () {
 
         let rusCapsKey = createNode('span', 'symbol inactive');
         rusCapsKey.innerHTML = `${rusCapsSymArray[i]}`;
-        
+
         key.append(engKey, engCapsKey, rusKey, rusCapsKey);
+
         if (i < 14) {
         line1.append(key);
-    } else if (i < 29) {
-        line2.append(key);
-    } else if (i < 42) {
-        line3.append(key);
-    } else if (i < 56) {
-        line4.append(key);
-    } else line5.append(key);
+        } else if (i < 29) {
+            line2.append(key);
+        } else if (i < 42) {
+            line3.append(key);
+        } else if (i < 56) {
+            line4.append(key);
+        } else line5.append(key);
+
+        if (functionalButtonsIndex.indexOf(i) === -1) {
+            engKey.classList.add('type-key');
+            engCapsKey.classList.add('type-key');
+            rusKey.classList.add('type-key');
+            rusCapsKey.classList.add('type-key');
+        } 
     }
 }
 
 createKeyboard();
+
+document.addEventListener("keydown", (event) => {
+    let pushedPhysicalButton = event.code;
+    console.log(pushedPhysicalButton);
+
+    let keyClassName ='.' + pushedPhysicalButton[0].toLowerCase() + pushedPhysicalButton.slice(1);
+    console.log(keyClassName);
+    let highlightButton = document.querySelector(keyClassName);
+    highlightButton.classList.add('pushed');
+});
+
+document.addEventListener("keyup", (event) => {
+    let pushedPhysicalButton = event.code;
+    console.log(pushedPhysicalButton);
+
+    let keyClassName ='.' + pushedPhysicalButton[0].toLowerCase() + pushedPhysicalButton.slice(1);
+    console.log(keyClassName);
+    let highlightButton = document.querySelector(keyClassName);
+    highlightButton.classList.remove('pushed');
+});
 
 
 // для полученеия массива кодов кнопок путем "прокликивания"

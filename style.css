@@ -39,9 +39,10 @@ body {
     transition: 0.3s;
 }
 
-.key:active {
+.key:active, .pushed {
     transform: scale(90%);
     border-radius: 10%;
+    background-color: rgb(184, 217, 236);
     transition: 0.3s;
 }
 
