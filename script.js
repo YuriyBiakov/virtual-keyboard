@@ -1,6 +1,4 @@
 'use strict'
-alert("Привет! \n\n Ввод с физической клавиатуры синхронизирован с виртуальной только при активной TextArea \n\n Языки раскладок в ОС и на виртуальной клавиатуре НЕ синхронизированы.");
-
 const body = document.querySelector('body');
 
 function createNode(tagName, className) {
@@ -16,7 +14,10 @@ function createBaseLayOut () {
     let keyboard = createNode('div', 'keyboard');
     let description = createNode('div', 'description');
     description.innerHTML = 'Created on Windows. <br>  To change the layout of the VIRTUAL keyboard, press ⊞';
-    body.append(textWindow, keyboard, description);
+    let link = createNode('a', 'link');
+    link.setAttribute('href', 'https://yuriybiakov.github.io/virtual-keyboard');
+    link.innerHTML = 'Deploy';
+    body.append(textWindow, keyboard, description, link);
 }
 createBaseLayOut ();
 
