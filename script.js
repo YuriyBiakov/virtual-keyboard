@@ -437,17 +437,33 @@ typingButtons.forEach((element) => {
 })
 
 // функция языка и CapsLock
-// let language = 'en';
-// let capsLocked = false;
 
-// let winKey = document.querySelector(".metaLeft");
+let language = 'en';
+let capsLocked = false;
 
-// function changeLayout() {
-//     if (language === 'en' &&& capsLocked === false) {
-//         language = 'ru';
-//     }
-//     else language = 'en';
-// }
+let winKey = document.querySelector(".metaLeft");
+let capsLock = document.querySelector(".capsLock");
+
+function capsSymbols() {
+    if (language === 'en') {
+        let symbolKeys = document.querySelectorAll('.eng');
+        symbolKeys.forEach((element) => {
+            element.classList.toggle('inactive');
+        })
+    }
+    else if (language === 'rus') {
+        let symbolKeys = document.querySelectorAll('.rus');
+        symbolKeys.forEach((element) => {
+            element.classList.toggle('inactive');
+        })
+    }
+}
+
+capsLock.addEventListener('click', (event) => {
+    capsSymbols();
+    capsLocked = !capsLocked;
+    capsLock.classList.toggle("caps-active");
+});
 
 
 

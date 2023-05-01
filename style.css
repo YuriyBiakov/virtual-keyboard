@@ -55,10 +55,11 @@ body {
     transition: 0.3s;
 }
 
-.capsActive, .capsLock {
-    background-color: rgb(206, 247, 59);
+.caps-active {
+    background-color: rgb(184, 217, 236);
     transition: 0.3s;
     border-radius: 10%;
+    color: rgb(132, 133, 134);
 }
 
 .backspace, .capsLock, .shiftLeft {
