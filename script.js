@@ -1,4 +1,6 @@
 'use strict'
+alert("Привет! \n\n Ввод с физической клавиатуры синхронизирован с виртуальной только при активной TextArea \n\n Языки раскладок в ОС и на виртуальной клавиатуре НЕ синхронизированы.");
+
 const body = document.querySelector('body');
 
 function createNode(tagName, className) {
@@ -13,7 +15,7 @@ function createBaseLayOut () {
     textWindow.setAttribute('rows', '25');
     let keyboard = createNode('div', 'keyboard');
     let description = createNode('div', 'description');
-    description.innerHTML = 'Created on Windows.  To change the layout of the VIRTUAL keyboard, press ⊞';
+    description.innerHTML = 'Created on Windows. <br>  To change the layout of the VIRTUAL keyboard, press ⊞';
     body.append(textWindow, keyboard, description);
 }
 createBaseLayOut ();
@@ -392,7 +394,6 @@ function createKeyboard () {
             line4.append(key);
         } else line5.append(key);
 
-        // добавляем классы к элементам, которые будут печататься
         if (functionalButtonsIndex.indexOf(i) === -1) {
             engKey.classList.add('type-key');
             engCapsKey.classList.add('type-key');
@@ -404,7 +405,6 @@ function createKeyboard () {
 
 createKeyboard();
 
-// связываем нажатия по физической клавиатуре с виртуальной 
 
 let textWindow = document.querySelector('.textWindow');
 
@@ -426,9 +426,6 @@ document.addEventListener("keyup", (event) => {
     highlightButton.classList.remove('pushed');
 });
 
-// связываем нажатия по виртуальной клавиатуре с текстовым полем 
-
-
 let typingButtons = document.querySelectorAll('.type-key');
 typingButtons.forEach((element) => {
     element.addEventListener("click", (event) =>
@@ -440,15 +437,12 @@ spaceButton.addEventListener('click', () => {
     textWindow.innerHTML += ' ';
 });
 
-// функция языка и CapsLock
 
 let language = 'eng';
 let capsLocked = false;
 
 let winKey = document.querySelector(".metaLeft");
 let capsLock = document.querySelector(".capsLock");
-
-// реализуем Капс
 
 function capsSymbols() {
     if (language === 'eng') {
@@ -470,8 +464,6 @@ capsLock.addEventListener('click', (event) => {
     capsLocked = !capsLocked;
     capsLock.classList.toggle("caps-active");
 });
-
-// реализуем смену языка
 
 function changeLanguage() {
     let engSymbolKeys = document.querySelectorAll('.eng');
@@ -521,18 +513,6 @@ function changeLanguage() {
     }
 }
 
-
-
-
 winKey.addEventListener('click', event => {
     changeLanguage();
 })
-
-
-// для полученеия массива кодов кнопок путем "прокликивания"
-// let keyCodeeArray = [];
-
-// document.addEventListener("keyup", (event) => {
-//     keyCodeArray.push(event.code);
-//     console.log(keyCodeeArray);
-// })
