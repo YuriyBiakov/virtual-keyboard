@@ -9,6 +9,10 @@ body {
     width: 780px;
 }
 
+.textWindow:focus {
+    background-color: rgb(200, 225, 248);
+}
+
 .keyboard {
     border: 1px solid black;
     padding: 5px 5px;

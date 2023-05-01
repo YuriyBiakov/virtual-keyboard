@@ -405,14 +405,15 @@ createKeyboard();
 
 // связываем нажатия по физической клавиатуре с виртуальной 
 
-document.addEventListener("keydown", (event) => {
-    let pushedPhysicalButton = event.code;
-    console.log(pushedPhysicalButton);
+let textWindow = document.querySelector('.textWindow');
 
+document.addEventListener("keydown", (event) => {
+    if (textWindow === document.activeElement) {
+    let pushedPhysicalButton = event.code;
     let keyClassName ='.' + pushedPhysicalButton[0].toLowerCase() + pushedPhysicalButton.slice(1);
-    console.log(keyClassName);
     let highlightButton = document.querySelector(keyClassName);
     highlightButton.classList.add('pushed');
+    }
 });
 
 document.addEventListener("keyup", (event) => {
@@ -426,10 +427,9 @@ document.addEventListener("keyup", (event) => {
 });
 
 // связываем нажатия по виртуальной клавиатуре с текстовым полем 
-let textWindow = document.querySelector('.textWindow');
+
 
 let typingButtons = document.querySelectorAll('.type-key');
-console.log(typingButtons);
 typingButtons.forEach((element) => {
     element.addEventListener("click", (event) =>
     textWindow.innerHTML += event.target.innerHTML);
