@@ -115,7 +115,7 @@ let engSymArray = [
     "]",
     "\\",
     "Del",
-    "CapsLock",
+    "Caps Lock",
     "a",
     "s",
     "d",
@@ -182,7 +182,7 @@ let engCapsSymArray = [
     "]",
     "\\",
     "Del",
-    "CapsLock",
+    "Caps Lock",
     "A",
     "S",
     "D",
@@ -249,7 +249,7 @@ let rusSymArray = [
     "ъ",
     "\\",
     "Del",
-    "CapsLock",
+    "Caps Lock",
     "ф",
     "ы",
     "в",
@@ -316,7 +316,7 @@ let rusCapsSymArray = [
     "Ъ",
     "\\",
     "Del",
-    "CapsLock",
+    "Caps Lock",
     "Ф",
     "Ы",
     "В",
@@ -355,10 +355,39 @@ let rusCapsSymArray = [
 
 function createKeyboard () {
     let keyboard = document.querySelector('.keyboard');
-    for (let i = 0; i < engSymArray.length; i++) {
-        let key = createNode('span', 'key');
-        key.innerHTML = engSymArray[i];
-        keyboard.append(key);
+    let line1 = createNode('div', 'line line1');
+    let line2 = createNode('div', 'line line2');
+    let line3 = createNode('div', 'line line3');
+    let line4 = createNode('div', 'line line4');
+    let line5 = createNode('div', 'line line5');
+    keyboard.append(line1, line2, line3, line4, line5);
+
+    for (let i = 0; i < 64; i++) {
+        let keyClassName = `key ${keyCodeArray[i][0].toLowerCase() + keyCodeArray[i].slice(1)}`;
+        let key = createNode('div', keyClassName);
+
+        let engKey = createNode('span', 'symbol');
+        engKey.innerHTML = `${engSymArray[i]}`;
+
+        let engCapsKey = createNode('span', 'symbol inactive');
+        engCapsKey.innerHTML = `${engCapsSymArray[i]}`;
+
+        let rusKey = createNode('span', 'symbol inactive');
+        rusKey.innerHTML = `${rusSymArray[i]}`;
+
+        let rusCapsKey = createNode('span', 'symbol inactive');
+        rusCapsKey.innerHTML = `${rusCapsSymArray[i]}`;
+        
+        key.append(engKey, engCapsKey, rusKey, rusCapsKey);
+        if (i < 14) {
+        line1.append(key);
+    } else if (i < 29) {
+        line2.append(key);
+    } else if (i < 42) {
+        line3.append(key);
+    } else if (i < 56) {
+        line4.append(key);
+    } else line5.append(key);
     }
 }
 

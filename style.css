@@ -11,16 +11,66 @@ body {
 
 .keyboard {
     border: 1px solid black;
+    padding: 5px 5px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-between;
-    gap: 5px;
+    gap: 3px; 
+}
+
+.line {
+    display: flex;
+    justify-content: space-between;
+    gap: 3px;
 }
 
 .key {
     border: 1px solid black;
-    width: 5%;
+    width: 37px;
     height: 25px;
     padding: 5px 5px;
     text-align: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+.key:hover {
+    background-color: rgb(184, 217, 236);
+    transition: 0.3s;
+}
+
+.key:active {
+    transform: scale(90%);
+    border-radius: 10%;
+    transition: 0.3s;
+}
+
+.capsActive, .capsLock {
+    background-color: rgb(206, 247, 59);
+    transition: 0.3s;
+    border-radius: 10%;
+}
+
+.backspace, .capsLock, .shiftLeft {
+    width: 90px;
+}
+
+.tab {
+    width: 45px;
+}
+
+.enter {
+    width: 90px;
+}
+
+.controlLeft {
+    width: 50px;
+}
+
+.space {
+    width: 390px;
+}
+
+.inactive {
+    display: none;
 }
