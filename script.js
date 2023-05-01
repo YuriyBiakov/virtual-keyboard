@@ -420,7 +420,6 @@ document.addEventListener("keydown", (event) => {
 document.addEventListener("keyup", (event) => {
     let pushedPhysicalButton = event.code;
     console.log(pushedPhysicalButton);
-
     let keyClassName ='.' + pushedPhysicalButton[0].toLowerCase() + pushedPhysicalButton.slice(1);
     console.log(keyClassName);
     let highlightButton = document.querySelector(keyClassName);
@@ -435,6 +434,11 @@ typingButtons.forEach((element) => {
     element.addEventListener("click", (event) =>
     textWindow.innerHTML += event.target.innerHTML);
 })
+
+let spaceButton = document.querySelector('.space');
+spaceButton.addEventListener('click', () => {
+    textWindow.innerHTML += ' ';
+});
 
 // функция языка и CapsLock
 
@@ -526,8 +530,9 @@ winKey.addEventListener('click', event => {
 
 
 // для полученеия массива кодов кнопок путем "прокликивания"
-// let keyCodeArray = [];
+// let keyCodeeArray = [];
 
-// document.addEventListener("keydown", (event) => {
+// document.addEventListener("keyup", (event) => {
 //     keyCodeArray.push(event.code);
-//     console.log(keyCodeArray);
+//     console.log(keyCodeeArray);
+// })
