@@ -368,16 +368,16 @@ function createKeyboard () {
         let keyClassName = `key ${keyCodeArray[i][0].toLowerCase() + keyCodeArray[i].slice(1)}`;
         let key = createNode('div', keyClassName);
 
-        let engKey = createNode('div', 'symbol eng');
+        let engKey = createNode('div', 'symbol eng eng-regular');
         engKey.innerHTML = `${engSymArray[i]}`;
 
-        let engCapsKey = createNode('div', 'symbol eng capsed inactive');
+        let engCapsKey = createNode('div', 'symbol eng eng-capsed inactive');
         engCapsKey.innerHTML = `${engCapsSymArray[i]}`;
 
-        let rusKey = createNode('div', 'symbol rus inactive');
+        let rusKey = createNode('div', 'symbol rus rus-regular inactive');
         rusKey.innerHTML = `${rusSymArray[i]}`;
 
-        let rusCapsKey = createNode('div', 'symbol rus capsed inactive');
+        let rusCapsKey = createNode('div', 'symbol rus rus-capsed inactive');
         rusCapsKey.innerHTML = `${rusCapsSymArray[i]}`;
 
         key.append(engKey, engCapsKey, rusKey, rusCapsKey);
@@ -438,14 +438,16 @@ typingButtons.forEach((element) => {
 
 // функция языка и CapsLock
 
-let language = 'en';
+let language = 'eng';
 let capsLocked = false;
 
 let winKey = document.querySelector(".metaLeft");
 let capsLock = document.querySelector(".capsLock");
 
+// реализуем Капс
+
 function capsSymbols() {
-    if (language === 'en') {
+    if (language === 'eng') {
         let symbolKeys = document.querySelectorAll('.eng');
         symbolKeys.forEach((element) => {
             element.classList.toggle('inactive');
@@ -465,7 +467,62 @@ capsLock.addEventListener('click', (event) => {
     capsLock.classList.toggle("caps-active");
 });
 
+// реализуем смену языка
 
+function changeLanguage() {
+    let engSymbolKeys = document.querySelectorAll('.eng');
+    let engCapsedSymbolKeys = document.querySelectorAll('.eng-capsed');
+    let engRegularSymbolKeys = document.querySelectorAll('.eng-regular');
+    
+    let rusSymbolKeys = document.querySelectorAll('.rus');
+    let rusCapsedSymbolKeys = document.querySelectorAll('.rus-capsed');
+    let rusRegularSymbolKeys = document.querySelectorAll('.rus-regular');
+
+    if (language === 'eng') {
+        language = 'rus';
+        engSymbolKeys.forEach((element) => {
+            if (!element.classList.contains('inactive')){
+                element.classList.add('inactive');
+            }
+        });
+        if (!capsLocked){
+            rusRegularSymbolKeys.forEach((element)=>{
+                element.classList.toggle('inactive');
+            })
+        }
+        if (capsLocked){
+            rusCapsedSymbolKeys.forEach((element)=>{
+                element.classList.toggle('inactive');
+            })
+        }
+    }
+    else if (language === 'rus') {
+        language = 'eng';
+        rusSymbolKeys.forEach((element) => {
+            if (!element.classList.contains('inactive')){
+                element.classList.add('inactive');
+            }
+        });
+
+        if (!capsLocked){
+            engRegularSymbolKeys.forEach((element)=>{
+                element.classList.toggle('inactive');
+            })
+        }
+        if (capsLocked){
+            engCapsedSymbolKeys.forEach((element)=>{
+                element.classList.toggle('inactive');
+            })
+        }
+    }
+}
+
+
+
+
+winKey.addEventListener('click', event => {
+    changeLanguage();
+})
 
 
 // для полученеия массива кодов кнопок путем "прокликивания"
@@ -474,4 +531,3 @@ capsLock.addEventListener('click', (event) => {
 // document.addEventListener("keydown", (event) => {
 //     keyCodeArray.push(event.code);
 //     console.log(keyCodeArray);
-// })
