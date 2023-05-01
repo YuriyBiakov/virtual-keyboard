@@ -1,0 +1,87 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.textWindow, .keyboard, .description {
+    width: 780px;
+}
+
+.textWindow:focus {
+    background-color: rgb(200, 225, 248);
+}
+
+.keyboard {
+    border: 1px solid black;
+    padding: 5px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3px; 
+}
+
+.line {
+    display: flex;
+    justify-content: space-between;
+    gap: 3px;
+}
+
+.key {
+    border: 1px solid black;
+    width: 37px;
+    height: 25px;
+    padding: 5px 5px;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+.symbol {
+    width: 100%;
+    height: 100%;
+}
+
+.key:hover {
+    background-color: rgb(184, 217, 236);
+    transition: 0.3s;
+}
+
+.key:active, .pushed {
+    transform: scale(90%);
+    border-radius: 10%;
+    background-color: rgb(184, 217, 236);
+    transition: 0.3s;
+}
+
+.caps-active {
+    background-color: rgb(184, 217, 236);
+    transition: 0.3s;
+    border-radius: 10%;
+    color: rgb(132, 133, 134);
+}
+
+.backspace, .capsLock, .shiftLeft {
+    width: 90px;
+}
+
+.tab {
+    width: 45px;
+}
+
+.enter {
+    width: 90px;
+}
+
+.controlLeft {
+    width: 50px;
+}
+
+.space {
+    width: 390px;
+}
+
+.inactive {
+    display: none;
+}
