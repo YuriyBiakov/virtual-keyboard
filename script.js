@@ -403,6 +403,8 @@ function createKeyboard () {
 
 createKeyboard();
 
+// связываем нажатия по физической клавиатуре с виртуальной 
+
 document.addEventListener("keydown", (event) => {
     let pushedPhysicalButton = event.code;
     console.log(pushedPhysicalButton);
@@ -423,6 +425,15 @@ document.addEventListener("keyup", (event) => {
     highlightButton.classList.remove('pushed');
 });
 
+// связываем нажатия по виртуальной клавиатуре с текстовым полем 
+let textWindow = document.querySelector('.textWindow');
+
+let typingButtons = document.querySelectorAll('.type-key');
+console.log(typingButtons);
+typingButtons.forEach((element) => {
+    element.addEventListener("click", (event) =>
+    textWindow.innerHTML += event.target.innerHTML);
+})
 
 // для полученеия массива кодов кнопок путем "прокликивания"
 
