@@ -13,7 +13,7 @@ function createBaseLayOut () {
     textWindow.setAttribute('rows', '25');
     let keyboard = createNode('div', 'keyboard');
     let description = createNode('div', 'description');
-    description.innerHTML = 'Created on Windows. For change language press Ctrl + Shift';
+    description.innerHTML = 'Created on Windows.  To change the layout of the VIRTUAL keyboard, press ⊞';
     body.append(textWindow, keyboard, description);
 }
 createBaseLayOut ();
@@ -435,8 +435,13 @@ typingButtons.forEach((element) => {
     textWindow.innerHTML += event.target.innerHTML);
 })
 
-// для полученеия массива кодов кнопок путем "прокликивания"
+// функция языка
+let language = 'en';
 
+
+
+
+// для полученеия массива кодов кнопок путем "прокликивания"
 // let keyCodeArray = [];
 
 // document.addEventListener("keydown", (event) => {
