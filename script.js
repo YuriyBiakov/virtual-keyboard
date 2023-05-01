@@ -368,16 +368,16 @@ function createKeyboard () {
         let keyClassName = `key ${keyCodeArray[i][0].toLowerCase() + keyCodeArray[i].slice(1)}`;
         let key = createNode('div', keyClassName);
 
-        let engKey = createNode('span', 'symbol');
+        let engKey = createNode('div', 'symbol eng');
         engKey.innerHTML = `${engSymArray[i]}`;
 
-        let engCapsKey = createNode('span', 'symbol inactive');
+        let engCapsKey = createNode('div', 'symbol eng capsed inactive');
         engCapsKey.innerHTML = `${engCapsSymArray[i]}`;
 
-        let rusKey = createNode('span', 'symbol inactive');
+        let rusKey = createNode('div', 'symbol rus inactive');
         rusKey.innerHTML = `${rusSymArray[i]}`;
 
-        let rusCapsKey = createNode('span', 'symbol inactive');
+        let rusCapsKey = createNode('div', 'symbol rus capsed inactive');
         rusCapsKey.innerHTML = `${rusCapsSymArray[i]}`;
 
         key.append(engKey, engCapsKey, rusKey, rusCapsKey);
@@ -392,6 +392,7 @@ function createKeyboard () {
             line4.append(key);
         } else line5.append(key);
 
+        // добавляем классы к элементам, которые будут печататься
         if (functionalButtonsIndex.indexOf(i) === -1) {
             engKey.classList.add('type-key');
             engCapsKey.classList.add('type-key');
@@ -435,8 +436,18 @@ typingButtons.forEach((element) => {
     textWindow.innerHTML += event.target.innerHTML);
 })
 
-// функция языка
-let language = 'en';
+// функция языка и CapsLock
+// let language = 'en';
+// let capsLocked = false;
+
+// let winKey = document.querySelector(".metaLeft");
+
+// function changeLayout() {
+//     if (language === 'en' &&& capsLocked === false) {
+//         language = 'ru';
+//     }
+//     else language = 'en';
+// }
 
 
 

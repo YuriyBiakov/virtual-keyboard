@@ -38,6 +38,11 @@ body {
     cursor: pointer;
 }
 
+.symbol {
+    width: 100%;
+    height: 100%;
+}
+
 .key:hover {
     background-color: rgb(184, 217, 236);
     transition: 0.3s;
